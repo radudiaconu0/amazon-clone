@@ -8,20 +8,21 @@
     <small class="subtotal__gift">
       <input type="checkbox"/> This order contains a gift
     </small>
-    <button>Proceed to checkout</button>
+    <button @click="() => this.$router.push('/payment')">Proceed to checkout</button>
   </div>
 </template>
 <script lang="ts">
-import {Product} from '@/interfaces/interfaces';
-import {computed, ComputedRef, defineComponent} from "@vue/composition-api";
+import {computed, defineComponent} from "@vue/composition-api";
 import MoneyFormat from "vue-money-format";
+// eslint-disable-next-line no-unused-vars
+import {Product} from "@/interfaces/interfaces";
 
 export default defineComponent({
   name: "Subtotal",
   components: {MoneyFormat},
   setup(_, {root}) {
-    const basket: ComputedRef<Array<Product>> = computed(() => root.$store.getters.basket)
-    const basketTotal: ComputedRef<Number> = computed(() => root.$store.getters.basketTotal)
+    const basket = computed((): Array<Product> => root.$store.getters.basket)
+    const basketTotal = computed((): Number => root.$store.getters.basketTotal)
     return {
       basket,
       basketTotal
