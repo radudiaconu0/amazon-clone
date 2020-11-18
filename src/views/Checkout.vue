@@ -8,7 +8,7 @@
       />
       <div>
         <h3>Hello, {{ user == null ? 'Guest' : user.email }}</h3>
-        <h2 class="checkout__title">Your shopping Basket</h2>
+        <h2 class="checkout__title">Your shopping Basket, Dude</h2>
         <div v-for="product in basket" :key="product.id">
           <CheckoutProduct :id="product.id" :image="product.image" :title="product.title" :rating="product.rating"
                            :price="product.price"></CheckoutProduct>
